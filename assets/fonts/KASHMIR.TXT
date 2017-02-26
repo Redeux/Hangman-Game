@@ -1,0 +1,68 @@
+This is the truetype version of the Kashmir font converted to IBM
+TrueType for use with Windows, etc, by Adam Albright with permission
+to distribute granted by the original author.
+                                               -- Matt Hill
+
+-------------------------------------------KASHMIR INTRO
+
+Howdy again.  This is the first (and with luck, the only) upgrade
+to my Kashmir font.  The uneven line widths that plagued several
+letters in the initial release have been eliminated.  The font is
+modeled after the typeface on the cover of Houses Of The Holy.
+I have provided PostScript Type 1 and TrueType versions of the
+font, along with four bitmap sizes that I have tweaked into
+legibility for the smaller point sizes.
+
+
+-------------------------------------------GENERAL NOTES
+
+This font contains a number of non-standard characters.  The
+four runes from Led Zeppelin 4 (Zoso, etc.) are assigned to the
+keys `, ~, @ and %.  There are also a number of special ligatures
+(see tips for improving font appearance).  As far as screen use
+goes, size 18 is the nicest (12 and 14 are very condensed and
+the lines in 24 are a bit too narrow for my tastes).  The printer
+fonts look good at any size, thanks to the advice of Jonathan
+Brecher (brecher@husc.harvard.edu) and John Skidgel
+(kaneda@applelink.apple.com), who have illuminated me in the
+mysteries of clockwise and counterclockwise outlines.
+
+
+---------------------TIPS FOR IMPROVING FONT APPEARANCE
+
+Kashmir also has several characters that make the type fit
+together better.  The vowels are underlined (just like on the
+album), and the bottom lines of some characters segue into the
+line under the vowels.  In order to get vowels to segue into each
+other requires a bit of trickery.  There is another set of vowels
+in the typeface with extended underlines.  To get them, type
+option-e (for extend) and then the vowel.  In addition, there are
+two versions of capital F and P.  Lower case letters will fit
+under the overhang if you use the versions option-p and option-f.
+
+
+------------------------------------------------LEGALESE
+
+This font is FREE!  There are no strings attached.  Distribute it at
+will.  I ask that you keep this document as part of the distribution
+package, because I want people to know the tips listed above.  Feel
+free to make changes to the font, as long as you send me a copy.
+Remember that I am not legally responsible for anything bad that
+happens to you, even it it involves my font.
+
+
+---------------------------------------------OTHER NOTES
+
+The other classic rock software alluded to above is the Doors
+Stack, a collection of lyrics, art & trivia about the band.  Now in
+its second edition, it is available from Sumex and other fine
+archives.
+
+I would love to hear your comments.  Even a brief note like "neat
+font" would make my day, so please make the effort to write.  I
+live at:
+ BDAVIES@POLAR.BOWDOIN.EDU
+ Brian Davies, Box 46 CT, Bowdoin College, Brunswick ME 04011
+
+
+

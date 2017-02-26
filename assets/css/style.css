@@ -1,0 +1,60 @@
+@font-face { font-family: Kashmir; src: url('../fonts/KASHMIR.TTF') format("truetype"); } 
+@font-face { font-family: Zeppelin; src: url('../fonts/ZEPPELIN.TTF') format("truetype"); } 
+
+.zeppelin {
+	font-family: "Zeppelin", sans-serif;
+}
+
+.kashmir {
+	font-family: "Kashmir", sans-serif;
+}
+
+body {
+	background-color: lightgrey;
+}
+
+.title {
+	font-size: 8em;
+}
+
+.darkred {
+	color: darkred;
+}
+
+span {
+	font-weight: normal;
+}
+
+.rotate-35 {
+/* Safari */
+-webkit-transform: rotate(-35deg);
+
+/* Firefox */
+-moz-transform: rotate(-35deg);
+
+/* IE */
+-ms-transform: rotate(-35deg);
+
+/* Opera */
+-o-transform: rotate(-35deg);
+}
+
+.relative {
+	position: relative;
+	z-index: 1;
+}
+
+.overtop {
+	position: absolute;
+	top: 18%;
+	left: 40%;
+	z-index: 2;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.subtitle {
+	font-size: 3em;
+}
