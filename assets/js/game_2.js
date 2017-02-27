@@ -113,6 +113,30 @@ var hangman = {
 			}
 		}
 	},
+	resetVariables: function(...variables) {
+
+		for (var i = 0; i < variables.length; i++) {
+			switch(typeof variables) {
+				case 'number':
+					variables[i] = 0;
+					break;
+				case 'string':
+					variables[i] = "";
+					break;
+				case 'boolean':
+					variables[i] = false;
+					break;
+				case 'function':
+					if (Array.isArray(variables[i])) {
+						variables[i] = [];
+					} else {
+						variables[i] = {};
+					}
+				default:
+					break;
+			}
+		}
+	},
 	generateRandomOption: function(toRandom) {
 		// Generate a random option from the zeppelinOptions Array and make sure it doesn't match the previous one unless there is only one left
 		do {
