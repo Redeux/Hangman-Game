@@ -20,43 +20,43 @@
 var zeppelinSongs = [
 	{
 		song: "Stairway to Heaven",
-		album: ""
+		album: "Led Zeppelin IV"
 	},
 	{
 		song: "Kashmir",
-		album: ""
+		album: "Physical Graffiti"
 	},
 	{
 		song: "Whole Lotta Love",
-		album: ""
+		album: "Led Zeppelin II"
 	},
 	{
 		song: "Achilles Last Stand",
-		album: ""
+		album: "Presence"
 	},
 	{
 		song: "When the Levee Breaks",
-		album: ""
+		album: "Led Zeppelin IV"
 	},
 	{
 		song: "Black Dog",
-		album: ""
+		album: "Led Zeppelin IV"
 	},
 	{
 		song: "Immigrant Song",
-		album: ""
+		album: "Led Zeppelin III"
 	},
 	{
 		song: "Dazed and Confused",
-		album: ""
+		album: "Led Zeppelin"
 	},
 	{
 		song: "Since I\'ve Been Loving You",
-		album: ""
+		album: "Led Zeppelin III"
 	},
 	{
 		song: "No Quarter",
-		album: ""
+		album: "Houses of the Holy"
 	}
 ];
 var hangmanWord = 0;
@@ -86,11 +86,10 @@ var hangman = {
 		foundIndex = [];
 		displayIncorrectGuesses.textContent = "";
 		displayGuessesLeft.textContent = "10";
+		
 		// Pick and random song from the array
 		hangmanWord = zeppelinSongs[Math.floor(Math.random() * zeppelinSongs.length)];
 		
-		
-
 		// add a blank, space, or ' as appropriate based on the song name 
 		for (var i = 0; i < hangmanWord.song.length; i++) {
 			if (hangmanWord.song[i] === " ") {
@@ -103,7 +102,7 @@ var hangman = {
 		}
 
 		// display the blanks on the web page
-		displaywordBlanks.textContent = blanks.join(" ");
+		displaywordBlanks.textContent = blanks.join("\u2009");
 	},
 	checkGuess: function(guess) {
 		if (hangmanWord.song.toLowerCase().indexOf(guess) !== -1 && incorrectGuesses.indexOf(guess) === -1 && alphabet.indexOf(guess) !== -1) {
@@ -123,7 +122,7 @@ var hangman = {
 			}
 
 			// update the display on the web page
-			displaywordBlanks.textContent = blanks.join(" ");
+			displaywordBlanks.textContent = blanks.join("\u2009");
 
 		} else if (alphabet.indexOf(guess) !== -1 && hangmanWord.song.toLowerCase().indexOf(guess) === -1 && incorrectGuesses.indexOf(guess) === -1) {
 			// if the guess is a letter, isn't part of the song name, and hasn't been guessed already
