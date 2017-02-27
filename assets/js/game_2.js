@@ -113,7 +113,7 @@ var hangman = {
 			}
 		}
 	},
-	resetVariables: function(...variables) {
+	resetDynamicVariables: function(...variables) {
 
 		for (var i = 0; i < variables.length; i++) {
 			switch(typeof variables) {
