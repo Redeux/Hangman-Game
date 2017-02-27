@@ -20,43 +20,63 @@
 var zeppelinSongs = [
 	{
 		song: "Stairway to Heaven",
-		album: "Led Zeppelin IV"
+		album: "Led Zeppelin IV",
+		art: "assets/images/Led_Zeppelin_IV.jpg",
+		music: "assets/sounds/Stairway_to_Heaven_3_sections.ogg"
 	},
 	{
 		song: "Kashmir",
-		album: "Physical Graffiti"
+		album: "Physical Graffiti",
+		art: "assets/images/Physical_Graffiti.jpg",
+		music: "assets/sounds/Kashmir.ogg"
 	},
 	{
 		song: "Whole Lotta Love",
-		album: "Led Zeppelin II"
+		album: "Led Zeppelin II",
+		art: "assets/images/Led_Zeppelin_II.jpg",
+		music: "assets/sounds/Whole_Lotta_Love.ogg"
 	},
 	{
 		song: "Achilles Last Stand",
-		album: "Presence"
+		album: "Presence",
+		art: "assets/images/Presence.jpg",
+		music: "assets/sounds/Achilles_Last_Stand.ogg"
 	},
 	{
 		song: "When the Levee Breaks",
-		album: "Led Zeppelin IV"
+		album: "Led Zeppelin IV",
+		art: "assets/images/Led_Zeppelin_IV.jpg",
+		music: "assets/sounds/When_the_Levee_Breaks.ogg"
 	},
 	{
 		song: "Black Dog",
-		album: "Led Zeppelin IV"
+		album: "Led Zeppelin IV",
+		art: "assets/images/Led_Zeppelin_IV.jpg",
+		music: "assets/sounds/Black_Dog.ogg"
 	},
 	{
 		song: "Immigrant Song",
-		album: "Led Zeppelin III"
+		album: "Led Zeppelin III",
+		art: "assets/images/Led_Zeppelin_III.png",
+		music: "assets/sounds/Immigrant_Song.ogg"
 	},
 	{
 		song: "Dazed and Confused",
-		album: "Led Zeppelin"
+		album: "Led Zeppelin",
+		art: "assets/images/Led_Zeppelin.png",
+		music: "assets/sounds/Dazed_and_Confused.ogg"
 	},
 	{
 		song: "Since I\'ve Been Loving You",
-		album: "Led Zeppelin III"
+		album: "Led Zeppelin III",
+		art: "assets/images/Led_Zeppelin_III.png",
+		music: "assets/sounds/Since_Ive_Been_Loving_You.ogg"
 	},
 	{
 		song: "No Quarter",
-		album: "Houses of the Holy"
+		album: "Houses of the Holy",
+		art: "assets/images/Houses_of_the_Holy.jpg",
+		music: "assets/sounds/No_Quarter.ogg"
 	}
 ];
 var hangmanWord = 0;
@@ -66,11 +86,13 @@ var incorrectGuessCount = 0;
 var wins = 0;
 var losses = 0;
 var foundIndex = [];
+var youLose = "assets/sounds/You_Lose.ogg";
 var displaywordBlanks = document.getElementById('wordBlanks');
 var displayWins = document.getElementById('wins');
 var displayLosses = document.getElementById('losses');
 var displayIncorrectGuesses = document.getElementById('incorrectGuesses');
 var displayGuessesLeft = document.getElementById('guessesLeft');
+var displayAudioImage = document.getElementById('audioImage');
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 
@@ -140,14 +162,16 @@ var hangman = {
 	},
 	checkGameStatus: function() {
 		if (incorrectGuessCount === 10) {
-			alert("You lost this round.  Better luck next time!");
+			// alert("You lost this round.  Better luck next time!");
 			losses++;
 			displayLosses.textContent = losses;
+			displayAudioImage.innerHTML = "<audio controls src=\"" + youLose + "\" autoplay class=\"no-display\">";
 			hangman.newGame();
 		} else if (blanks.indexOf("_") === -1) {
-			alert("Winner winner chicken dinner!");
+			// alert("Winner winner chicken dinner!");
 			wins++;
 			displayWins.textContent = wins;
+			displayAudioImage.innerHTML = "<audio controls src=\"" + hangmanWord.music + "\" autoplay class=\"no-display\">";
 			hangman.newGame();
 		}
 	}

@@ -58,3 +58,7 @@ span {
 .subtitle {
 	font-size: 3em;
 }
+
+.no-display {
+	display: none;
+}
