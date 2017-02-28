@@ -224,10 +224,20 @@ var hangman = {
 	updateBlanksDisplay: function() {
 		displaywordBlanks.textContent = blanks.join("\u2009");
 	},
+	checkIfOver: function() {
+		if (zeppelinOptions.length === 0) {
+			// If the user has guessed all the songs
+			displaywordBlanks.textContent = "You Win!  GAME OVER"
+
+		} else {
+			// Initialize a new game
+			hangman.newGame();
+		}
+	},
 	checkGameStatus: function() {
 		if (incorrectGuessCount === 7) {
 			// If the incorrect guess count exceeds the maximum
-			// Inrement the loss count
+			// Increment the loss count
 			losses++;
 			// Update the loss display
 			displayLosses.textContent = losses;
@@ -250,8 +260,8 @@ var hangman = {
 			"<audio controls src=\"" + hangmanWord.music + "\" autoplay>";
 			// Remove the song as a future option
 			zeppelinOptions.splice(zeppelinOptions.indexOf(hangmanWord), 1);
-			// Initialize a new game
-			hangman.newGame();
+			// Check to see if the game is over and reset if not
+			hangman.checkIfOver();
 		}
 	}
 };
