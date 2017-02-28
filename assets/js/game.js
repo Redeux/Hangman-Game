@@ -102,7 +102,7 @@ var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 var hangman = {
 	createBlanks: function() {
 		// add a blank, space, or ' as appropriate based on the song name 
-		console.log(hangmanWord);
+		// console.log(hangmanWord);
 		for (var i = 0; i < hangmanWord.song.length; i++) {
 			if (hangmanWord.song[i] === " ") {
 				blanks.push("\u00A0");
@@ -114,28 +114,37 @@ var hangman = {
 		}
 	},
 	resetDynamicVariables: function(...variables) {
+		console.log('variables: ' + variables);
 		//reset variables to intial state
 		for (var i = 0; i < variables.length; i++) {
 			switch(typeof variables) {
 				case 'number':
+					console.log('number:' + variables[i]);
 					variables[i] = 0;
 					break;
 				case 'string':
+					console.log('string:' + variables[i]);
 					variables[i] = "";
 					break;
 				case 'boolean':
+					console.log('bool:' + variables[i]);
 					variables[i] = false;
 					break;
 				case 'function':
 					if (Array.isArray(variables[i])) {
+						console.log('array:' + variables[i]);
 						variables[i] = [];
 					} else {
+						console.log('function:' + variables[i]);
 						variables[i] = {};
 					}
 				default:
 					break;
 			}
+			
 		}
+		console.log(variables);
+		return variables;
 	},
 	generateRandomOption: function(toRandom) {
 		// Generate a random option from the zeppelinOptions Array and make sure it doesn't match the previous one unless there is only one left
@@ -158,6 +167,7 @@ var hangman = {
 	newGame: function() {
 		// Reset game specific variables
 		hangman.resetVariables();
+		// blanks, hangmanWord, incorrectGuesses, incorrectGuessCount, foundIndex = hangman.resetDynamicVariables(blanks, hangmanWord, incorrectGuesses, incorrectGuessCount, foundIndex);
 
 		// Pick and random song from the array
 		hangmanWord = hangman.generateRandomOption(zeppelinOptions);
@@ -216,19 +226,31 @@ var hangman = {
 	},
 	checkGameStatus: function() {
 		if (incorrectGuessCount === 7) {
+			// If the incorrect guess count exceeds the maximum
+			// Inrement the loss count
 			losses++;
+			// Update the loss display
 			displayLosses.textContent = losses;
+			// Display the you lost text
 			displayAudioImage.innerHTML = "<h4>Not quite.  Better luck next time!</h4>" + 
 			"<audio controls src=\"" + youLose + "\" autoplay class=\"invisible\">";
+			// Set the lastHangmanWord so it can be checked for the next game
 			lastHangmanWord = hangmanWord;
+			// Initialize a new game
 			hangman.newGame();
 		} else if (blanks.indexOf("_") === -1) {
+			// If there are no more blanks in the blanks array
+			// Increment the win count
 			wins++;
+			// Update the wins display
 			displayWins.textContent = wins;
+			// Display the you win text
 			displayAudioImage.innerHTML = "<h4>You got it!</h4>" + 
 			"<img src=\"" + hangmanWord.art + "\" class=\"d-block\">" + 
 			"<audio controls src=\"" + hangmanWord.music + "\" autoplay>";
-			lastHangmanWord = hangmanWord;
+			// Remove the song as a future option
+			zeppelinOptions.splice(zeppelinOptions.indexOf(hangmanWord), 1);
+			// Initialize a new game
 			hangman.newGame();
 		}
 	}
