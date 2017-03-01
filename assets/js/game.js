@@ -22,7 +22,7 @@ var zeppelinOptions = [
 		song: "Stairway to Heaven",
 		album: "Led Zeppelin IV",
 		art: "assets/images/Led_Zeppelin_IV.jpg",
-		music: "assets/sounds/Stairway_to_Heaven_3_sections.ogg"
+		music: "assets/sounds/Stairway_to_Heaven.ogg"
 	},
 	{
 		song: "Kashmir",
@@ -113,38 +113,37 @@ var hangman = {
 			}
 		}
 	},
-	resetDynamicVariables: function(...variables) {
-		console.log('variables: ' + variables);
-		//reset variables to intial state
-		for (var i = 0; i < variables.length; i++) {
-			switch(typeof variables) {
+	resetVarToDefault: function(...variables) {
+		// resets any number of variable to their 'empty' state based on their type
+		var newArray = [];
+
+		variables.forEach(function(item) {
+			switch(typeof item) {
 				case 'number':
-					console.log('number:' + variables[i]);
-					variables[i] = 0;
+					item = 0;
+					newArray.push(item);
 					break;
 				case 'string':
-					console.log('string:' + variables[i]);
-					variables[i] = "";
+					item = "";
+					newArray.push(item);
 					break;
 				case 'boolean':
-					console.log('bool:' + variables[i]);
-					variables[i] = false;
+					item = false;
+					newArray.push(item);
 					break;
-				case 'function':
-					if (Array.isArray(variables[i])) {
-						console.log('array:' + variables[i]);
-						variables[i] = [];
+				case 'object':
+					if (Array.isArray(item)) {
+						item = [];
+						newArray.push(item);
 					} else {
-						console.log('function:' + variables[i]);
-						variables[i] = {};
+						item = {};
+						newArray.push(item);
 					}
 				default:
 					break;
 			}
-			
-		}
-		console.log(variables);
-		return variables;
+		});
+		return newArray;
 	},
 	generateRandomOption: function(toRandom) {
 		// Generate a random option from the zeppelinOptions Array and make sure it doesn't match the previous one unless there is only one left
@@ -154,20 +153,11 @@ var hangman = {
 
 		return randomOption;
 	},
-	resetVariables: function() {
-		// Reset game specific variables
-		blanks = [];
-		hangmanWord = 0;
-		incorrectGuesses = [];
-		incorrectGuessCount = 0;
-		foundIndex = [];
-		displayIncorrectGuesses.textContent = "";
-		displayGuessesLeft.textContent = "7";
-	},
 	newGame: function() {
 		// Reset game specific variables
-		hangman.resetVariables();
-		// blanks, hangmanWord, incorrectGuesses, incorrectGuessCount, foundIndex = hangman.resetDynamicVariables(blanks, hangmanWord, incorrectGuesses, incorrectGuessCount, foundIndex);
+		[blanks, hangmanWord, incorrectGuesses, incorrectGuessCount, foundIndex, displayIncorrectGuesses.textContent] = hangman.resetVarToDefault(blanks, hangmanWord, incorrectGuesses, incorrectGuessCount, foundIndex, displayIncorrectGuesses.textContent);
+
+		displayGuessesLeft.textContent = "7";
 
 		// Pick and random song from the array
 		hangmanWord = hangman.generateRandomOption(zeppelinOptions);
@@ -228,7 +218,7 @@ var hangman = {
 		if (zeppelinOptions.length === 0) {
 			// If the user has guessed all the songs
 			displaywordBlanks.textContent = "You Win!  GAME OVER"
-
+			displayAudioImage.innerHTML = "<audio controls src=\"assets/sounds/Gallows_Pole.ogg\" autoplay class=\"invisible\">";
 		} else {
 			// Initialize a new game
 			hangman.newGame();
